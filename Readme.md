@@ -6,10 +6,11 @@
 
 ![apresentação](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/resumo%20arquitetura%20do%20projeto.png)
 
-
-
 Este projeto oferece um exemplo de caso de integração de dados, utilizando Docker, MySQL, Python, Power BI e Airflow.
 A arquitetura utiliza apenas infra local, e consiste em conteinerizar banco de dados my sql para armazenar os dados das transações e tabelas dimensão.
+
+## Passos para rodar o projeto.
+Clonar este repositório.
 
 Após clonar o repositório, verificar se as seguintes pastas existem, se não, criá-las.
 logs
@@ -29,8 +30,11 @@ Acessar a pasta do projeto.
 cd app
 docker-compose -f airflow-docker-compose.yaml up -d
 
-airflow
+Acessar o Airflow.
+
 http://127.0.0.1:8080
 
+## Detalhamento do estudo
 
-[Apache Airflow Fundamentals](https://www.credly.com/badges/ec73f560-9b6f-4bb7-8aa6-82f2bfa5bf50) <br>
+
+
