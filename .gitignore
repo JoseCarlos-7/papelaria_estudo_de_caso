@@ -1,0 +1,16 @@
+source/calendario.csv
+source/campanhas.csv
+source/clientes.csv
+source/fornecedor.csv
+source/produtos.csv
+source/vendedores.csv
+papelaria_estudo_de_caso/temp_env
+temp_env
+app/dags/__pycache__
+app/dags/functions/__pycache__
+app/custom_class/__pycache__
+logs/
+plugins/
+backups/
+config/
+app/custom_class

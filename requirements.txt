@@ -1,0 +1,11 @@
+mysql-connector-python
+pyarrow
+pyodbc
+pandas==2.2.3
+pymysql==1.0.2 
+sqlalchemy==1.4.25
+beautifulsoup4
+python-dotenv
+selenium==4.17.2
+requests
+
