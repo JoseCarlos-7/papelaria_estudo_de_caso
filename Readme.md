@@ -88,7 +88,7 @@ Airflow UI <br>
 Acesse 127.0.0.1:8080 no seu navegador e verá uma imagem como essa: <br>
 A primeira coisa a fazer é ativar suas Dags, acionando o toggle que aparece no início de cada Dag. Após isso clicar no símbolo de play que está no fim de cada Dag, nessa ordem de execução [salvar_arquivos_csv > dim_tables > fact_tables] <br>
 
-![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/airflow dags.png)
+![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/airflow%20dags.png)
 
 **dag_creates_csv_files**
 maps_filepath(): checa se o diretório informado para salvar os arquivos está presente no .env, passa como variável para as seguintes tasks:
