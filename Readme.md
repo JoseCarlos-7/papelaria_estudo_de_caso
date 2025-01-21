@@ -32,7 +32,7 @@ BACKUP_DIRECTORY='caminho\do\diretorio\backups' <br>
 
 * Acessar a pasta do projeto.
 cd app <br>
-docker-compose -f airflow-docker-compose.yaml up -d <br>
+* docker-compose -f airflow-docker-compose.yaml up -d <br>
 
 Espera-se ao final da execução do commando que tenha 9 conteineres em execução no Docker. <br>
 
