@@ -14,29 +14,32 @@ Com esta estrutura, analisamos no Power Bi, a quantidade de vendas, faturamento,
 Para executar o projeto é necessário ter instalado Power Bi, Docker, IDE (Aqui utilizei VS Code) e algum client MySQL (Aqui usei Workbench). Todos esses aplicativos tem opção gratuita.
 
 ## Passos para rodar o projeto.
-Clonar este repositório.
+* Clonar este repositório.
 
-Após clonar o repositório, verificar se as seguintes pastas existem, se não, criá-las.
-logs
-config
-plugins
-backups
+* Após clonar o repositório, verificar se as seguintes pastas existem, se não, criá-las.
+logs <br>
+config <br>
+plugins <br>
+backups <br>
 
-Editar o arquivo papelaria_estudo_de_caso\app\.env, ajustando o caminho das variáveis listadas abaixo.
+* Editar o arquivo papelaria_estudo_de_caso\app\.env, ajustando o caminho das variáveis listadas abaixo.
 .env
 
-Ajustar .env inserindo o caminho das pastas source, temp e backups
-DATA_DIRECTORY='C:\Users\josec\Desktop\dados2025\source'
-TEMP_DIRECTORY='C:\Users\josec\Desktop\dados2025\temp'
-BACKUP_DIRECTORY='C:\Users\josec\Desktop\dados2025\backups'
+* Ajustar .env inserindo o caminho das pastas source, temp e backups
+DATA_DIRECTORY='C:\Users\josec\Desktop\dados2025\source' <br>
+TEMP_DIRECTORY='C:\Users\josec\Desktop\dados2025\temp' <br>
+BACKUP_DIRECTORY='C:\Users\josec\Desktop\dados2025\backups' <br>
 
-Acessar a pasta do projeto.
-cd app
-docker-compose -f airflow-docker-compose.yaml up -d
+* Acessar a pasta do projeto.
+cd app <br>
+docker-compose -f airflow-docker-compose.yaml up -d <br>
 
-Acessar o Airflow.
+Espera-se ao final da execução do commando que tenha 9 conteineres em execução no Docker. <br>
 
-http://127.0.0.1:8080
+![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/docker.png)
+
+E também é esperado que você possa acessar o Airflow UI, digitando 127.0.0.1:8080 no seu navegador. Serão solicitados usuário e senha, ambos estão configurados como **airflow** <br>
+![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/airflow_ui.png)
 
 ## Panorama do estudo.
 Uma maneira simples de entender o panorama é observá-lo em quatro partes distintas:
