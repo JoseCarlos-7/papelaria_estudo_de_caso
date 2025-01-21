@@ -26,9 +26,9 @@ backups <br>
 .env
 
 * Ajustar .env inserindo o caminho das pastas source, temp e backups <br>
-DATA_DIRECTORY='C:\Users\josec\Desktop\dados2025\source' <br>
-TEMP_DIRECTORY='C:\Users\josec\Desktop\dados2025\temp' <br>
-BACKUP_DIRECTORY='C:\Users\josec\Desktop\dados2025\backups' <br>
+DATA_DIRECTORY='caminho\do\diretorio\source' <br>
+TEMP_DIRECTORY='caminho\do\diretorio\temp' <br>
+BACKUP_DIRECTORY='caminho\do\diretorio\backups' <br>
 
 * Acessar a pasta do projeto.
 cd app <br>
