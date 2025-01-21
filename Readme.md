@@ -101,7 +101,39 @@ task_id = f"carga_do_lote_de_vendas"
 
 Airflow UI <br>
 Acesse 127.0.0.1:8080 no seu navegador e verá uma imagem como essa: <br>
-A primeira coisa a fazer é ativar suas Dags, acionando o toggle que aparece no início de cada Dag. Após isso clicar no símbolo de play que está no fim de cada Dag, nessa ordem de execução [salvar_arquivos_csv > dim_tables > fact_tables] <br>
+
+A primeira coisa a fazer é ativar suas Dags, acionando o toggle que aparece no início de cada Dag. 
+
+Importante!!
+A dag_transactions que carrega os dados de vendas está configurada para carregar 1 dia de vendas por padrão. Mas existe um trecho de código comentado que executa o carregamento de um período de 1 ano. Para ter maior massa de dados para estudo, recomendo que descomente o o trecho que carrega 1 ano e comente o trecho que carrega um dia e deixe desta maneira: <br>
+
+```python
+    _maps_filepath = PythonOperator(
+        task_id = f"checa_se_fonte_disponivel",
+        python_callable=maps_filepath,
+        op_kwargs={"directory":'DATA_DIRECTORY',"mode":'container'},
+        provide_context=True,
+        do_xcom_push=True
+        )
+    
+    # _sales_into_mysql = PythonOperator(
+    #         task_id = f"carga_do_lote_de_vendas",
+    #         python_callable=sales_into_mysql,
+    #         op_kwargs={"path":"{{task_instance.xcom_pull(task_ids='checa_se_fonte_disponivel', key='return_value')}}"}
+    #         )
+    # Para carregar várias datas, descomentar
+    for _ in creates_dates_range("2024-01-01","2025-01-17")[:]:
+        _sales_into_mysql = PythonOperator(
+            task_id = f"carga_do_lote_de_vendas_{_}",
+            python_callable=sales_into_mysql,
+            op_kwargs={"path":"{{task_instance.xcom_pull(task_ids='checa_se_fonte_disponivel', key='return_value')}}","data_lote":_}
+            )
+
+    
+    _maps_filepath >> _sales_into_mysql
+```
+
+Após isso clicar no símbolo de play que está no fim de cada Dag, nessa ordem de execução [salvar_arquivos_csv > dim_tables > fact_tables] <br>
 
 ![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/airflow%20dags.png)
 
@@ -109,7 +141,8 @@ A primeira coisa a fazer é ativar suas Dags, acionando o toggle que aparece no 
 Após a execução de todas as tasks, é possível acessar os dados armazenados no MySql via Power Bi. O banco de dados é servido no 127.0.0.1 e banco de dados my_database.
 O arquivo disponível já está configurado para as conexões funcionarem e os dados apresentados. 
 
-É esperado que veja o relatório desta maneira: <br>
+É esperado que veja o relatório com este layout, mas com números diferentes, uma vez que cada execução gera dados aleatórios: <br>
+
 
 ![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/power_bi.png)
 
