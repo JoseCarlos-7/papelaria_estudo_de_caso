@@ -105,7 +105,11 @@ Acesse 127.0.0.1:8080 no seu navegador e verá uma imagem como essa: <br>
 A primeira coisa a fazer é ativar suas Dags, acionando o toggle que aparece no início de cada Dag. 
 
 Importante!!
-A dag_transactions que carrega os dados de vendas está configurada para carregar 1 dia de vendas por padrão. Mas existe um trecho de código comentado que executa o carregamento de um período de 1 ano. Para ter maior massa de dados para estudo, recomendo que descomente o o trecho que carrega 1 ano e comente o trecho que carrega um dia e deixe desta maneira: <br>
+A dag_transactions que carrega os dados de vendas está configurada para carregar 1 dia de vendas por padrão. Mas existe um trecho de código comentado que executa o carregamento de um período de 1 ano. <br>
+
+***Caso não se importe de ter apenas um dia de massa de dados, pode desconsiderar essa instrução.*** <br>
+
+Para ter maior massa de dados para estudo, recomendo que descomente o o trecho que carrega 1 ano e comente o trecho que carrega um dia e deixe desta maneira: <br>
 
 ```python
     _maps_filepath = PythonOperator(
