@@ -105,6 +105,7 @@ task_id = f"carga_do_lote_de_vendas"
 
 Airflow UI <br>
 Acesse 127.0.0.1:8080 no seu navegador e verá uma imagem como essa: <br>
+![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/airflow%20dags.png)
 
 A primeira coisa a fazer é ativar suas Dags, acionando o toggle que aparece no início de cada Dag. 
 
@@ -143,7 +144,7 @@ Para ter maior massa de dados para estudo, recomendo que descomente o o trecho q
 
 Após isso clicar no símbolo de play que está no fim de cada Dag, nessa ordem de execução [salvar_arquivos_csv > dim_tables > fact_tables] <br>
 
-![airflow](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/airflow%20dags.png)
+
 
 ## Power Bi
 Após a execução de todas as tasks, é possível acessar os dados armazenados no MySql via Power Bi. O banco de dados é servido no 127.0.0.1 e banco de dados my_database.
