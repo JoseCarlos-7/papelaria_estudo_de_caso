@@ -8,6 +8,7 @@
 
 Este projeto oferece um exemplo de caso de integração de dados, utilizando Docker, MySQL, Python, Power BI e Airflow.
 A arquitetura utiliza apenas infra local, e consiste em conteinerizar banco de dados my sql para armazenar os dados das transações e tabelas dimensão. <br>
+Com esta estrutura, analisamos no Power Bi, a quantidade de vendas, faturamento, lucro e ticket médio por vendedor, por dia da semana e por faixa etária dos clientes.
 
 **Requisitos** <br>
 Para executar o projeto é necessário ter instalado Power Bi, Docker, IDE (Aqui utilizei VS Code) e algum client MySQL (Aqui usei Workbench). Todos esses aplicativos tem opção gratuita.
