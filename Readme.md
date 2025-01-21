@@ -7,7 +7,10 @@
 ![apresentação](https://github.com/JoseCarlos-7/papelaria_estudo_de_caso/blob/main/imagens/resumo%20arquitetura%20do%20projeto.png)
 
 Este projeto oferece um exemplo de caso de integração de dados, utilizando Docker, MySQL, Python, Power BI e Airflow.
-A arquitetura utiliza apenas infra local, e consiste em conteinerizar banco de dados my sql para armazenar os dados das transações e tabelas dimensão.
+A arquitetura utiliza apenas infra local, e consiste em conteinerizar banco de dados my sql para armazenar os dados das transações e tabelas dimensão. <br>
+
+**Requisitos** <br>
+Para executar o projeto é necessário ter instalado Power Bi, Docker, IDE (Aqui utilizei VS Code) e algum client MySQL (Aqui usei Workbench). Todos esses aplicativos tem opção gratuita.
 
 ## Passos para rodar o projeto.
 Clonar este repositório.
@@ -54,7 +57,52 @@ app\dags\dag_transactions.py <br>
 
 ## Detalhamento do estudo
 
-Como todos os dados utilizados para este estudo são fictícios,
+## SQL
+Antes de executar as tasks de armazenamento de dados, é fundamental criar as tabelas no banco de dados. Os scripts de criação das tabelas estão no diretório ***sql***. Você pode executá-los utilizando o client SQL de sua preferência. Aqui utilizei o Workbench.
+
+Pacotes e funções mais importantes:
+
+## criação de dados
+
+**ciar_dados_ficticios**
+
+creates_dictionaries(): Retorna um dicionário de listas em que o primeiro elemento da lista é um dicionário com dados fictícios de uma 
+entidade, e o segundo elemento é o nome do arquivo a ser salvo em formato CVS.
+
+saves_csv_files(): Salva os dicionários em formato cvs.
+
+**cria_calendario**
+saves_dataframe(): Função que salva um calendário em formato csv, que será usado como dimensão calendário no Power BI.
+
+## Armazenamento no MySql
+
+**gerador_de_dados**
+reads_all_csv_files(path): Faz a leitura dos arquivos CSV salvos após a criação. <br>
+inserts_dim_tables_into_mysql(): Insere as tabelas de dimensão no MySql. <br>
+sales_into_mysql(): Lê as tabelas de dimensão e utiliza as chaves primárias para criar uma tabela de transações (fato) com chaves estrangeiras relacionadas a cada entidade. <br>
+
+## Orquestração
+Para todas as tasks de orquestração, é muito importante que o arquivo .env receba o caminho correto da pasta source da máquina local. Existe a função que checa o caminho e retorna mensagem de log caso esteja incorreta.
+
+**dag_creates_csv_files**
+maps_filepath(): checa se o diretório informado para salvar os arquivos está presente no .env, passa como variável para as seguintes tasks:
+task_id = f"salva_arquivo_calendario_localmente"
+task_id = f"salva_arquivos_dim_localmente"
+
+**dag_dim_tables**
+maps_filepath(): checa se o diretório informado para salvar os arquivos está presente no .env, passa como variável para as seguintes tasks:
+task_id = f"carga_das_tabelas_dim"
+
+**dag_transactions**
+maps_filepath(): checa se o diretório informado para salvar os arquivos está presente no .env, passa como variável para as seguintes tasks:
+task_id = f"carga_do_lote_de_vendas"
+
+## Power Bi
+Após a execução de todas as tasks, é possível acessar os dados armazenados no MySql via Power Bi. O banco de dados é servido no 127.0.0.1 e banco de dados my_database.
+O arquivo disponível já está configurado para as conexões funcionarem e os dados apresentados. 
+
+
+
 
 
 

@@ -4,6 +4,10 @@
 import pandas as pd
 import os
 def creates_dictionaries():
+    '''
+    Retorna um dicionário de listas em que o primeiro elemento da lista é um dicionário com dados fictícios de uma 
+    entidade, e o segundo elemento é o nome do arquivo a ser salvo em formato CVS.
+    '''
 
     clientes = {
         "cod_cliente": [1234567, 2345678, 3456789, 4567890, 5678901, 6789012, 7890123, 8901234, 9012345, 1122334,
