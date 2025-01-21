@@ -25,7 +25,7 @@ backups <br>
 * Editar o arquivo papelaria_estudo_de_caso\app\.env, ajustando o caminho das variáveis listadas abaixo.
 .env
 
-* Ajustar .env inserindo o caminho das pastas source, temp e backups
+* Ajustar .env inserindo o caminho das pastas source, temp e backups <br>
 DATA_DIRECTORY='C:\Users\josec\Desktop\dados2025\source' <br>
 TEMP_DIRECTORY='C:\Users\josec\Desktop\dados2025\temp' <br>
 BACKUP_DIRECTORY='C:\Users\josec\Desktop\dados2025\backups' <br>
