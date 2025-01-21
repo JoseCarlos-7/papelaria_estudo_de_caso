@@ -35,18 +35,18 @@ with DAG(
         do_xcom_push=True
         )
     
-    # _sales_into_mysql = PythonOperator(
-    #         task_id = f"carga_do_lote_de_vendas",
-    #         python_callable=sales_into_mysql,
-    #         op_kwargs={"path":"{{task_instance.xcom_pull(task_ids='checa_se_fonte_disponivel', key='return_value')}}"}
-    #         )
-    # Para carregar várias datas, descomentar
-    for _ in creates_dates_range("2024-01-01","2025-01-17")[:]:
-        _sales_into_mysql = PythonOperator(
-            task_id = f"carga_do_lote_de_vendas_{_}",
+    _sales_into_mysql = PythonOperator(
+            task_id = f"carga_do_lote_de_vendas",
             python_callable=sales_into_mysql,
-            op_kwargs={"path":"{{task_instance.xcom_pull(task_ids='checa_se_fonte_disponivel', key='return_value')}}","data_lote":_}
+            op_kwargs={"path":"{{task_instance.xcom_pull(task_ids='checa_se_fonte_disponivel', key='return_value')}}"}
             )
+    # Para carregar várias datas, descomentar
+    # for _ in creates_dates_range("2024-01-01","2025-01-17")[:]:
+    #     _sales_into_mysql = PythonOperator(
+    #         task_id = f"carga_do_lote_de_vendas_{_}",
+    #         python_callable=sales_into_mysql,
+    #         op_kwargs={"path":"{{task_instance.xcom_pull(task_ids='checa_se_fonte_disponivel', key='return_value')}}","data_lote":_}
+    #         )
 
     
     _maps_filepath >> _sales_into_mysql
